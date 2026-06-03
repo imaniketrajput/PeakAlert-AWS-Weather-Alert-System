@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeakAlert - Real-time Weather Alerts for Hikers</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>🏔️ PeakAlert</h1>
+            <p class="subtitle">Real-time Weather Alerts for Hikers</p>
+            <div id="last-updated" class="last-updated"></div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Stats Bar -->
+        <section class="stats-bar" id="stats-bar">
+            <div class="stat-card">
+                <span class="stat-number" id="total-alerts">--</span>
+                <span class="stat-label">Active Alerts</span>
+            </div>
+            <div class="stat-card severe">
+                <span class="stat-number" id="severe-count">--</span>
+                <span class="stat-label">Severe/Extreme</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="trails-count">--</span>
+                <span class="stat-label">Trails Monitored</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="server-instance">--</span>
+                <span class="stat-label">Server Instance</span>
+            </div>
+        </section>
+
+        <!-- Search -->
+        <section class="search-section">
+            <input type="text" id="search-input" 
+                   placeholder="🔍 Search trails... (e.g., Appalachian, Grand Canyon)"
+                   onkeyup="filterAlerts()">
+        </section>
+
+        <!-- Alerts Grid -->
+        <section class="alerts-section">
+            <h2>⚠️ Current Weather Alerts</h2>
+            <div id="alerts-container" class="alerts-grid">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Loading weather alerts...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trend Chart -->
+        <section class="trend-section">
+            <h2>📊 7-Day Alert Trend</h2>
+            <div id="trend-chart" class="trend-chart">
+                <div class="loading">Loading trends...</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Data sourced from <a href="https://weather.gov" target="_blank">weather.gov</a> | 
+           Updated every 15 minutes | 
+           Built with AWS (Lambda, EC2, RDS, S3, CloudFront)</p>
+        <p class="instance-info" id="footer-instance"></p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
